@@ -1,16 +1,9 @@
-'''
-This python script has coments with all the commands 
-used for creating the database in MySQL Workbench.
+-- Criando tabelas SQL para o EER presente aqui.
 
-
-
-CREATE A SCHEMA:
-----------------------------------------------------------------
 create schema if not exists ecommerce;
+
 use ecommerce;
 
-CREATE TABLE Clientes
-----------------------------------------------------------------
 create table Clientes(
 	idClient INT NOT NULL AUTO_INCREMENT UNIQUE,
     Pname VARCHAR(10) NOT NULL,
@@ -21,8 +14,6 @@ create table Clientes(
     constraint pk_idClient primary key (idClient)
 );
 
-CREATE TABLE Entregas
-----------------------------------------------------------------
 create table Entregas(
 	id INT NOT NULL AUTO_INCREMENT UNIQUE,
     Cod INT NOT NULL,
@@ -31,8 +22,6 @@ create table Entregas(
     constraint pk_Entregas primary key(id)
 );
 
-CREATE TABLE CreditCards
-----------------------------------------------------------------
 create table CreditCards(
 	id INT NOT NULL AUTO_INCREMENT UNIQUE,
     `Name` VARCHAR(45) NOT NULL,
@@ -41,24 +30,17 @@ create table CreditCards(
     ExpDate DATE NOT NULL,
     fk_idClient INT NOT NULL,
     constraint pk_CreditCards primary key(id),
-    constraint fk_ClientCreditCards foreign key (fk_idClient) REFERENCES ecommerce.Clientes(idClient)
+    constraint fk_Client foreign key (fk_idClient) REFERENCES ecommerce.Clientes(idClient)
 		ON DELETE NO ACTION
         ON UPDATE NO ACTION
 );
 
-# Na tabela acima, quando eu crio a fk_Client eu designo que, caso ela seja deletada em Clientes, não haja
-mudança na tabela CreditCards, assim como caso ela tenha algum update
-
-CREATE TABLE Formas_Pagamento
-----------------------------------------------------------------
 create table Formas_Pagamentos(
 	id INT NOT NULL AUTO_INCREMENT UNIQUE,
     PayType VARCHAR(45) NOT NULL UNIQUE DEFAULT 'Cartao de Credito',
     constraint pk_FormasPgto primary key(id)
 );
 
-CREATE TABLE Pedidos
-----------------------------------------------------------------
 create table Pedidos(
 	id INT NOT NULL AUTO_INCREMENT UNIQUE,
     fk_idClient INT NOT NULL,
@@ -73,7 +55,7 @@ create table Pedidos(
     constraint pk_Pedidos primary key(id, fk_idClient, fk_idDeliver),
     constraint fk_ClientDeliver foreign key(fk_idClient) references ecommerce.Clientes(idClient)
 		ON DELETE NO ACTION
-        ON UPDATE CASCADE,
+        ON UPDATE NO ACTION,
 	constraint fk_Deliver foreign key(fk_idDeliver) references ecommerce.Entregas(id)
 		ON DELETE NO ACTION
         ON UPDATE NO ACTION,
@@ -85,8 +67,6 @@ create table Pedidos(
         ON UPDATE NO ACTION
 );
 
-CREATE TABLE Produtos
-----------------------------------------------------------------
 create table Produtos(
 	id INT NOT NULL AUTO_INCREMENT UNIQUE,
     `Name`VARCHAR(20) NOT NULL,
@@ -98,8 +78,6 @@ create table Produtos(
     constraint pk_Produto primary key(id)
 );
 
-CREATE TABLE Fornecedores
-----------------------------------------------------------------
 create table Fornecedores(
 	id INT NOT NULL auto_increment UNIQUE,
     SocialName VARCHAR(255) NOT NULL,
@@ -108,8 +86,6 @@ create table Fornecedores(
     constraint pk_Fornecedores primary key(id)
 );
 
-CREATE TABLE Fornecedores_Produtos
-----------------------------------------------------------------
 create table Fornecedores_Produtos(
 	fk_idSupplier INT NOT NULL,
     fk_idProduct INT NOT NULL,
@@ -122,8 +98,6 @@ create table Fornecedores_Produtos(
         ON UPDATE NO ACTION
 );
 
-CREATE TABLE Estoques
-----------------------------------------------------------------
 create table Estoques(
 	id INT NOT NULL AUTO_INCREMENT UNIQUE,
     `Local` VARCHAR(255) NOT NULL,
@@ -132,8 +106,6 @@ create table Estoques(
     constraint pk_Estoque primary key(id)
 );
 
-CREATE TABLE Produtos_Estoques
-----------------------------------------------------------------
 create table Produtos_Estoques(
 	fk_idProduct INT NOT NULL,
     fk_idStorage INT NOT NULL,
@@ -147,8 +119,6 @@ create table Produtos_Estoques(
         ON UPDATE NO ACTION
 );
 
-CREATE TABLE Pedidos_Produtos
-----------------------------------------------------------------
 create table Pedidos_Produtos(
 	fk_idProduct INT NOT NULL, 
     fk_idOrder INT NOT NULL,
@@ -163,8 +133,6 @@ create table Pedidos_Produtos(
         ON UPDATE NO ACTION
 );
 
-CREATE TABLE Vendedores
-----------------------------------------------------------------
 create table Vendedores(
 	id INT NOT NULL AUTO_INCREMENT UNIQUE,
     SocialName VARCHAR(25) NOT NULL,
@@ -176,8 +144,6 @@ create table Vendedores(
     constraint pk_Vendedor primary key(id)
 );
 
-CREATE TABLE Produtos_Terceiros
-----------------------------------------------------------------
 create table Produtos_Terceiros(
 	fk_idSeller INT NOT NULL,
     fk_idProduct INT NOT NULL,
@@ -191,8 +157,6 @@ create table Produtos_Terceiros(
         ON UPDATE NO ACTION
 );
 
-CREATE TABLE Documentos
-----------------------------------------------------------------
 create table Documentos(
 	id INT NOT NULL AUTO_INCREMENT UNIQUE,
     DocType ENUM('CPF', 'CNPJ') NOT NULL,
@@ -204,4 +168,4 @@ create table Documentos(
         ON UPDATE NO ACTION
 );
 
-'''
+SELECT Table_Name, Constraint_Name, Constraint_Type FROM information_schema.table_constraints WHERE table_schema = 'ecommerce';
