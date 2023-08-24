@@ -73,7 +73,7 @@ create table Pedidos(
     constraint pk_Pedidos primary key(id, fk_idClient, fk_idDeliver),
     constraint fk_ClientDeliver foreign key(fk_idClient) references ecommerce.Clientes(idClient)
 		ON DELETE NO ACTION
-        ON UPDATE NO ACTION,
+        ON UPDATE CASCADE,
 	constraint fk_Deliver foreign key(fk_idDeliver) references ecommerce.Entregas(id)
 		ON DELETE NO ACTION
         ON UPDATE NO ACTION,
