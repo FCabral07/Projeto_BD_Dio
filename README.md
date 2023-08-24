@@ -24,7 +24,8 @@ This project was developed using the following technologies:
 
 ### Create Schemas
 
-![](assets/criandoTabelaSQL.py)
+<a href="assets/criandoTabelaSQL.py"></a>
+
 
 
 
