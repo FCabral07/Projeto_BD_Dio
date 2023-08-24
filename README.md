@@ -13,6 +13,7 @@ This is a repository for publish my project at the bootcamp of iFood - Data Scie
 This project was developed using the following technologies:
 
 - [MySQL](https://www.mysql.com/)
+- [Python](https://www.python.org/)
 
 ## EER
 <a id="#ancora3"></a>
