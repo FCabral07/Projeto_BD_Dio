@@ -1,5 +1,3 @@
--- Criando tabelas SQL para o EER presente aqui.
-
 create schema if not exists ecommerce;
 
 use ecommerce;
@@ -46,7 +44,7 @@ create table Pedidos(
     fk_idClient INT NOT NULL,
     fk_idDeliver INT NOT NULL,
     fk_idPayType INT NOT NULL,
-    fk_idCreditCard INT NOT NULL,
+    fk_idCreditCard INT,
     `Status` ENUM('Confirmado', 'Cancelado', 'Em Processamento') NOT NULL DEFAULT 'Em Processamento',
     `Description` VARCHAR(255),
     TotalValue FLOAT NOT NULL,
@@ -167,5 +165,3 @@ create table Documentos(
 		ON DELETE NO ACTION
         ON UPDATE NO ACTION
 );
-
-SELECT Table_Name, Constraint_Name, Constraint_Type FROM information_schema.table_constraints WHERE table_schema = 'ecommerce';
