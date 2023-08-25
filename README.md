@@ -22,9 +22,10 @@ This project was developed using the following technologies:
 ## Scripts BD
 <a id="#ancora4"></a>
 
-### Create Schemas
+### SQL Commands
 
-- [Table Commands](assets/criandoTabelaSQL.sql)
+- [Table Creation](assets/criandoTabelaSQL.sql)
+- [Table Storage](assets/povoandoTabelas.sql)
 
 
 
