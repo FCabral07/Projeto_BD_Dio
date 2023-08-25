@@ -15,14 +15,12 @@ This project was developed using the following technologies:
 - [MySQL](https://www.mysql.com/)
 - [Python](https://www.python.org/)
 
-## EER
+## 📊 EER
 <a id="#ancora3"></a>
 ![img](assets/Ecommerce_EER.png)
 
-## Scripts BD
+## 📝 SQL Commands
 <a id="#ancora4"></a>
-
-### SQL Commands
 
 - [Table Creation](assets/criandoTabelaSQL.sql)
 - [Table Storage](assets/povoandoTabelas.sql)
