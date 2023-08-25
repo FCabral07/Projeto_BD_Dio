@@ -24,7 +24,7 @@ This project was developed using the following technologies:
 
 - [Table Creation](assets/criandoTabelaSQL.sql)
 - [Table Storage](assets/povoandoTabelas.sql)
-
+- [Querys SQL](assets/querysSQL.sql)
 
 
 
